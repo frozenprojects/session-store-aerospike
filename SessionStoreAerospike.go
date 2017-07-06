@@ -1,4 +1,4 @@
-package arn
+package aerospikestore
 
 import (
 	"errors"
@@ -18,8 +18,8 @@ type SessionStoreAerospike struct {
 	duration int
 }
 
-// NewAerospikeStore creates a session store using an Aerospike database.
-func NewAerospikeStore(database *aerospike.Database, set string, duration int) *SessionStoreAerospike {
+// New creates a session store using an Aerospike database.
+func New(database *aerospike.Database, set string, duration int) *SessionStoreAerospike {
 	writePolicy := as.NewWritePolicy(0, uint32(duration))
 	writePolicy.RecordExistsAction = as.REPLACE
 
